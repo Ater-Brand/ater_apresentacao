@@ -1,0 +1,25 @@
+// ════════════════════════════════════════
+// main.scss — Entry point do SCSS
+// Compilar com: sass --watch assets/scss/main.scss:assets/css/style.css
+// ════════════════════════════════════════
+
+// 1. Variáveis e tokens de design
+@use 'variables';
+
+// 2. Reset e base global
+@use 'reset';
+
+// 3. Navegação
+@use 'nav';
+
+// 4. Seções de conteúdo
+@use 'hero';
+@use 'manifesto';
+@use 'collection';
+@use 'packaging';
+@use 'inspirations';
+@use 'about';
+@use 'footer';
+
+// 5. Animações
+@use 'animations';

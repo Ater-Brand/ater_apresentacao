@@ -1,0 +1,186 @@
+// ════════════════════════════════════════
+// _collection.scss — Grid de camisetas
+// ════════════════════════════════════════
+
+@use 'variables' as v;
+
+// ── Cabeçalho da seção ──────────────────
+.collection-header {
+  position: relative;
+  z-index: v.$z-base;
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+
+  h2 {
+    font-family: v.$font-heading;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    letter-spacing: 0.2em;
+
+    span {
+      color: v.$gold;
+    }
+  }
+}
+
+// ── Seção individual de coleção ─────────
+.collection-section {
+  position: relative;
+  z-index: v.$z-base;
+  padding: 2.5rem 2rem 5rem;
+}
+
+.collection-name {
+  font-family: v.$font-mono;
+  font-size: 0.6rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: v.$gold;
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+
+.collection-title {
+  font-family: v.$font-heading;
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  letter-spacing: 0.15em;
+  text-align: center;
+  margin-bottom: 0.6rem;
+}
+
+// ── Descrição opcional da coleção ───────
+.collection-desc {
+  font-family: v.$font-body;
+  font-style: italic;
+  color: rgba(v.$off-white, 0.45);
+  text-align: center;
+  max-width: 460px;
+  margin: 0 auto 3rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+// ── Grid de cards ───────────────────────
+.tee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+// ── Card individual ─────────────────────
+.tee-card {
+  background: #111;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  cursor: pointer;
+
+  // gradiente inferior para legibilidade do texto
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(v.$black, 0.85) 0%, transparent 55%);
+    pointer-events: none;
+    transition: opacity 0.4s;
+  }
+
+  &:hover::after {
+    opacity: 0.35;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  &:hover img {
+    transform: scale(1.06);
+  }
+
+  // ── Variante para camisetas de fundo branco ──
+  // Uso: <div class="tee-card tee-card--light">
+  // Evita que a camiseta seja cortada pelo object-fit: cover
+  &--light {
+    background: #f5f0e8;
+
+    img {
+      object-fit: contain;      // mostra a camiseta inteira sem cortar
+      object-position: center;
+      padding: 1rem;            // respiro nas bordas
+    }
+  }
+}
+
+// ── Info dentro do card ─────────────────
+.tee-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 1.4rem 1.2rem;
+}
+
+.tee-tag {
+  font-family: v.$font-mono;
+  font-size: 0.58rem;
+  letter-spacing: 0.4em;
+  color: v.$gold;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.tee-name {
+  font-family: v.$font-heading;
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+}
+
+// ── Badge Frente / Costas ───────────────
+.tee-side-badge {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  z-index: 3;
+  font-family: v.$font-mono;
+  font-size: 0.52rem;
+  letter-spacing: 0.3em;
+  padding: 0.25rem 0.6rem;
+  background: rgba(v.$black, 0.85);
+  border: 1px solid rgba(v.$gold, 0.35);
+  color: v.$gold;
+  text-transform: uppercase;
+}
+
+// ── Placeholder (sem imagem ainda) ─────
+.tee-card-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px dashed rgba(v.$gold, 0.15);
+}
+
+.ph-icon {
+  font-size: 2.5rem;
+  opacity: 0.25;
+}
+
+.ph-label {
+  font-family: v.$font-mono;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: rgba(v.$gold, 0.35);
+  text-align: center;
+  padding: 0 1rem;
+  line-height: 1.8;
+}

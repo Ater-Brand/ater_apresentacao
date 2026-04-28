@@ -1,0 +1,88 @@
+// ════════════════════════════════════════
+// _hero.scss — Hero section + mandala SVG giratória
+// ════════════════════════════════════════
+
+@use 'variables' as v;
+
+// ── Container principal ─────────────────
+.hero {
+  position: relative;
+  z-index: v.$z-base;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8rem 2rem 4rem;
+  overflow: hidden;
+}
+
+// ── Mandala SVG (rosa dos ventos gótica) ─
+.hero-mandala {
+  position: absolute;
+  width: min(680px, 88vw);
+  opacity: 0.055;
+  animation: spin 120s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// ── Eyebrow (monospace label) ───────────
+.hero-eyebrow {
+  font-family: v.$font-mono;
+  font-size: 0.68rem;
+  letter-spacing: 0.5em;
+  color: v.$gold;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 1s ease both;
+}
+
+// ── Título principal ────────────────────
+.hero-title {
+  font-family: v.$font-display;
+  font-size: clamp(5rem, 18vw, 14rem);
+  font-weight: 900;
+  line-height: 0.88;
+  background: linear-gradient(
+    140deg,
+    v.$off-white   0%,
+    v.$gold-light  35%,
+    v.$gold        65%,
+    v.$gold-dark   100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeUp 1s 0.15s ease both;
+}
+
+// ── Subtítulo ───────────────────────────
+.hero-sub {
+  font-family: v.$font-body;
+  font-style: italic;
+  font-size: clamp(1rem, 2.2vw, 1.4rem);
+  color: rgba(v.$off-white, 0.5);
+  margin-top: 1.5rem;
+  max-width: 500px;
+  line-height: 1.7;
+  animation: fadeUp 1s 0.3s ease both;
+
+  em {
+    color: v.$gold-light;
+    font-style: italic;
+  }
+}
+
+// ── Linha decorativa vertical ───────────
+.hero-line {
+  margin: 2.5rem auto 0;
+  width: 1px;
+  height: 55px;
+  background: linear-gradient(to bottom, v.$gold, transparent);
+  animation: fadeUp 1s 0.45s ease both;
+}

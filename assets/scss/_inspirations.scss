@@ -1,0 +1,129 @@
+// ════════════════════════════════════════
+// _inspirations.scss — Cards de inspiração (Ajustado)
+// ════════════════════════════════════════
+
+@use 'variables' as v;
+
+.inspirations {
+  position: relative;
+  z-index: v.$z-base;
+  padding: 5rem 2rem;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.inspo-header {
+  font-family: v.$font-heading;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  letter-spacing: 0.15em;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.inspo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 2rem;
+}
+
+.inspo-card {
+  border: 1px solid rgba(v.$gold, 0.18);
+  padding: 2rem 1.5rem; // Mantivemos o padding original do card
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s;
+
+  &:hover {
+    border-color: v.$gold;
+    transform: translateY(-5px);
+  }
+
+  // barra lateral animada (mantida)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 0;
+    background: v.$gold;
+    transition: height 0.4s;
+    z-index: 1; // Garante que a barra fique sobre o conteúdo
+  }
+
+  &:hover::before {
+    height: 100%;
+  }
+}
+
+// ── Cabeçalho do Card (Logo + Nome + Cargo) ─────
+.inspo-card-header {
+  display: flex;
+  align-items: center; // Alinha logo e texto verticalmente
+  margin-bottom: 1.2rem; // Espaço entre o cabeçalho e o texto do card
+}
+
+// ── Logo Pequeno ──────────────────────────
+.inspo-logo {
+  width: 32px; // Tamanho pequeno desejado
+  height: auto; // Mantém a proporção
+  margin-right: 0.8rem; // Espaço entre o logo e o texto
+  object-fit: contain; // Garante que o logo não seja cortado
+}
+
+// ── Meta-dados do Cabeçalho ─────────────────
+.inspo-header-meta {
+  display: flex;
+  flex-direction: column; // Empilha nome e cargo verticalmente
+  align-items: flex-start; // Alinha o texto à esquerda
+}
+
+.inspo-name {
+  font-family: v.$font-heading;
+  font-size: 1.25rem; // Tamanho ligeiramente maior
+  letter-spacing: 0.1em;
+  color: v.$gold;
+  margin-bottom: 0.1rem; // Espaço mínimo com o cargo
+}
+
+.inspo-role {
+  font-family: v.$font-mono;
+  font-size: 0.57rem;
+  letter-spacing: 0.3em;
+  color: rgba(v.$gold, 0.45); // Usando a mesma cor original
+  text-transform: uppercase;
+  opacity: 0.65; // Ajuste fino na sutileza
+  margin: 0; // Remove margens antigas
+}
+
+// ── Texto do Card ───────────────────────
+.inspo-text {
+  font-family: v.$font-body;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: rgba(v.$off-white, 0.5);
+  font-style: italic;
+}
+
+// ── Responsive ─────────────────────────────
+@media (max-width: v.$bp-mobile) {
+  .inspirations {
+    padding: 3rem 1rem;
+  }
+  
+  .inspo-header {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+  }
+
+  .inspo-grid {
+    grid-template-columns: 1fr; // Um card por linha no mobile
+    gap: 1.5rem;
+  }
+
+  .inspo-card {
+    padding: 1.5rem 1rem; // Ajuste leve no padding mobile
+  }
+
+  .inspo-logo {
+    width: 28px; // Logo ligeiramente menor no mobile
+  }
+}

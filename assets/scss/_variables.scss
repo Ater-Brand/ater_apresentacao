@@ -1,0 +1,42 @@
+// ════════════════════════════════════════
+// _variables.scss — Cores, Tipografia, Breakpoints
+// ════════════════════════════════════════
+
+// ── Cores ───────────────────────────────
+$black:       #0a0a0a;
+$off-white:   #f5f0e8;
+$gold:        #c9a84c;
+$gold-light:  #e8c97a;
+$gold-dark:   #7a5c10;
+$red:         #8b1a1a;
+
+// ── CSS Custom Properties (usadas no JS e em contextos sem SCSS) ──
+:root {
+  --black:       #{$black};
+  --off-white:   #{$off-white};
+  --gold:        #{$gold};
+  --gold-light:  #{$gold-light};
+  --red:         #{$red};
+
+  --font-display: 'Cinzel Decorative', serif;
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body:    'IM Fell English', serif;
+  --font-mono:    'Space Mono', monospace;
+}
+
+// ── Tipografia ──────────────────────────
+$font-display: 'Cinzel Decorative', serif;
+$font-heading: 'Bebas Neue', sans-serif;
+$font-body:    'IM Fell English', serif;
+$font-mono:    'Space Mono', monospace;
+
+// ── Breakpoints ─────────────────────────
+$bp-mobile:   768px;
+$bp-tablet:   1024px;
+$bp-desktop:  1280px;
+
+// ── Z-index scale ───────────────────────
+$z-bg:     0;
+$z-base:   1;
+$z-nav:    100;
+$z-cursor: 9999;

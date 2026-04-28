@@ -1,0 +1,57 @@
+// ════════════════════════════════════════
+// _nav.scss — Navegação fixa
+// ════════════════════════════════════════
+
+@use 'variables' as v;
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: v.$z-nav;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 3rem;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.95), transparent);
+  border-bottom: 1px solid rgba(v.$gold, 0.12);
+}
+
+.nav-brand {
+  font-family: v.$font-display;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: v.$gold;
+  letter-spacing: 0.35em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+
+  a {
+    font-family: v.$font-heading;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    color: v.$off-white;
+    opacity: 0.6;
+    transition: opacity 0.2s, color 0.2s;
+
+    &:hover {
+      opacity: 1;
+      color: v.$gold;
+    }
+  }
+}
+
+// ── Responsive ──────────────────────────
+@media (max-width: v.$bp-mobile) {
+  nav {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}

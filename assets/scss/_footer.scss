@@ -1,0 +1,53 @@
+// ════════════════════════════════════════
+// _footer.scss — Rodapé institucional
+// ════════════════════════════════════════
+
+@use 'variables' as v;
+
+footer {
+  position: relative;
+  z-index: v.$z-base;
+  padding: 5rem 2rem;
+  background: #050505;
+  border-top: 1px solid rgba(v.$gold, 0.1);
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: v.$font-display;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: v.$gold;
+  letter-spacing: 0.5em;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.footer-verse {
+  font-family: v.$font-body;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(v.$off-white, 0.6);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+
+  em {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: v.$gold;
+  }
+}
+
+.footer-copy {
+  font-family: v.$font-mono;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: rgba(v.$off-white, 0.25);
+  text-transform: uppercase;
+}
+
+// ── Ajuste para o erro de import do Vite ──
+// Certifique-se de que no main.scss você usa: @use './footer';
