@@ -14,7 +14,7 @@ export default defineConfig({
   //
   // Troque 'ater' pelo nome EXATO do seu repositório no GitHub:
   // ─────────────────────────────────────────────────────────
-  base: '/ater/',
+  base: '/ater_apresentacao/',
 
   css: {
     devSourcemap: true,
