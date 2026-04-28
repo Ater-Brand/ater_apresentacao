@@ -1,0 +1,80 @@
+# .github/workflows/deploy.yml
+#
+# Toda vez que você fizer push na branch "main",
+# esse workflow roda automaticamente:
+# 1. Instala as dependências (npm install)
+# 2. Compila o projeto (vite build → gera /dist)
+# 3. Publica a pasta /dist no GitHub Pages
+#
+# Você não precisa entender cada linha — só não apague esse arquivo.
+
+name: Deploy ATER para GitHub Pages
+
+on:
+  push:
+    branches:
+      - main   # dispara ao fazer push na branch principal
+
+  # Permite rodar manualmente pela aba "Actions" do GitHub
+  workflow_dispatch:
+
+# Permissões necessárias para publicar no Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Garante que só um deploy roda por vez
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+
+  # ── Job 1: Build ──────────────────────────────────
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Clona o repositório
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # 2. Instala o Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3. Instala dependências (vite + sass)
+      - name: Instalar dependências
+        run: npm install
+
+      # 4. Compila o projeto com Vite
+      - name: Build
+        run: npm run build
+
+      # 5. Prepara a pasta /dist para o Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # 6. Faz upload do /dist como artefato
+      - name: Upload do artefato
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+  # ── Job 2: Deploy ─────────────────────────────────
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy para GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
